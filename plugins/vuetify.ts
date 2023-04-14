@@ -1,10 +1,5 @@
 import { createVuetify } from "vuetify";
-import {
-  MAIN_THEME,
-  mainTheme,
-  MAIN_DARK_THEME,
-  mainDarkTheme,
-} from "@/helpers/themes";
+import { MAIN_THEME, mainTheme, mainDarkTheme } from "@/helpers/themes";
 import { defaults } from "@/helpers/defaults";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 import * as appAll from "vuetify/components";

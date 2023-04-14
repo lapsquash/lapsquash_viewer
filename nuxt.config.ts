@@ -10,6 +10,8 @@ export default defineNuxtConfig({
       config.plugins?.push(vuetify());
     },
   },
+  modules: ["nuxt-electron"],
+
   vite: {
     ssr: {
       noExternal: ["vuetify"],

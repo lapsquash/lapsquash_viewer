@@ -1,23 +1,13 @@
-<script setup>
-import { mdiPost } from "@mdi/js";
-</script>
+<script setup></script>
 
 <template>
   <VApp>
-    <VAppBar color="primary">
-      <template v-slot:prepend>
-        <VAppBarNavIcon color="on-primary" :icon="mdiPost" />
-      </template>
-      <v-app-bar-title>tpl-nuxt</v-app-bar-title>
-    </VAppBar>
-    <VMain class="v-main">
-      <NuxtPage />
-    </VMain>
+    <NuxtLayout>
+      <VMain class="v-main">
+        <NuxtPage />
+      </VMain>
+    </NuxtLayout>
   </VApp>
 </template>
 
-<style scoped lang="scss">
-.v-main {
-  margin-top: -20px;
-}
-</style>
+<style scoped lang="scss"></style>

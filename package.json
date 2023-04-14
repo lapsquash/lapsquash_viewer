@@ -1,4 +1,12 @@
 {
+  "name": "lapsquash_viewer",
+  "description": "viewer for lapsquash",
+  "version": "0.0.1",
+  "author": {
+    "name": "lapsquash",
+    "email": "info@lapsquash.us.to"
+  },
+  "main": "dist-electron/main.js",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -6,18 +14,24 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "dist": "electron-builder --dir"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.1",
+    "electron": "^24.1.1",
+    "electron-builder": "^23.6.0",
     "eslint": "^8.35.0",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-vue": "^9.9.0",
     "nuxt": "^3.2.3",
-    "typescript": "^4.9.5"
+    "nuxt-electron": "^0.4.5",
+    "typescript": "^4.9.5",
+    "vite-electron-plugin": "^0.8.2",
+    "vite-plugin-electron-renderer": "^0.14.0"
   },
   "dependencies": {
     "@mdi/js": "^7.1.96",
