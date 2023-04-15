@@ -34,6 +34,8 @@ jobs:
 
       - name: 📦 Build electron project
         run: yarn run build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: ⬆️ Artifacts upload
         uses: actions/upload-artifact@v3.1.1
