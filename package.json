@@ -4,18 +4,15 @@
   "version": "0.0.1",
   "author": {
     "name": "lapsquash",
-    "email": "info@lapsquash.us.to"
+    "email": "wappon_28_dev@lapsquash.my.to"
   },
   "main": "dist-electron/main.js",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "build": "nuxi build --prerender && electron-builder",
     "postinstall": "nuxt prepare",
-    "lint": "eslint --fix .",
-    "dist": "electron-builder --dir"
+    "lint": "eslint --fix ."
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",

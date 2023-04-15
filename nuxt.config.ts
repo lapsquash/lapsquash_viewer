@@ -11,7 +11,9 @@ export default defineNuxtConfig({
     },
   },
   modules: ["nuxt-electron"],
-
+  electron: {
+    renderer: {},
+  },
   vite: {
     ssr: {
       noExternal: ["vuetify"],

@@ -9,7 +9,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9999999;
+  z-index: 9999;
   height: var(--title-bar-height);
   width: 100%;
   -webkit-app-region: drag;
