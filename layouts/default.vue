@@ -18,7 +18,7 @@ onMounted(() => (isLoading.value = false));
 </template>
 <style scoped lang="scss">
 .slot-container {
-  padding-top: var(--title-bar-height);
+  padding-top: var(--title-bar-height); 
 
   .progress {
     position: fixed;

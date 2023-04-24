@@ -24,6 +24,11 @@ const preload = path.join(process.env["DIST"], "preload.js");
 function bootstrap() {
   win = new BrowserWindow({
     frame: false,
+    titleBarStyle: 'hidden',
+    titleBarOverlay: {
+      color: '#b22d00',
+      symbolColor: '#ffffff',
+    },
     webPreferences: {
       preload,
       nodeIntegrationInWorker: true,
