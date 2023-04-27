@@ -7,13 +7,15 @@ onMounted(() => (isLoading.value = false));
 </script>
 
 <template>
-  <div class="wide-title">
-    A Vue3 project template with<br />
-    Nuxt3 & Vuetify3
+  <div>
+    <div class="wide-title">
+      A Vue3 project template with<br />
+      Nuxt3 & Vuetify3
+    </div>
+    <main>
+      <Coffee />
+    </main>
   </div>
-  <main>
-    <Coffee />
-  </main>
 </template>
 
 <style scoped lang="scss">

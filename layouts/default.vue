@@ -4,21 +4,19 @@ const isLoading = ref<boolean>(true);
 onMounted(() => (isLoading.value = false));
 </script>
 <template>
-  <title-bar />
-  <vMain>
-    <div class="slot-container">
-      <VProgressLinear
-        v-bind:indeterminate="isLoading"
-        class="progress"
-      ></VProgressLinear>
-
-      <slot></slot>
-    </div>
-  </vMain>
+  <div>
+    <title-bar />
+    <vMain>
+      <div class="slot-container">
+        <VProgressLinear :indeterminate="isLoading" class="progress"></VProgressLinear>
+        <slot></slot>
+      </div>
+    </vMain>
+  </div>
 </template>
 <style scoped lang="scss">
 .slot-container {
-  padding-top: var(--title-bar-height); 
+  padding-top: var(--title-bar-height);
 
   .progress {
     position: fixed;

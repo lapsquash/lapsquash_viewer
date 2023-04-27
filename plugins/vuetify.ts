@@ -1,12 +1,14 @@
 import { createVuetify } from "vuetify";
-import { MAIN_THEME, mainTheme, mainDarkTheme } from "@/helpers/themes";
-import { defaults } from "@/helpers/defaults";
-import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 import * as appAll from "vuetify/components";
+import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
+
+import { defaults } from "@/helpers/defaults";
+import { MAIN_THEME, mainTheme, mainDarkTheme } from "@/helpers/themes";
+
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-    ssr: true,
+          ssr: true,
     defaults,
     components: {
       ...appAll,

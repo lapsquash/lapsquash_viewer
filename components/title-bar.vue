@@ -1,7 +1,9 @@
 <script setup lang="ts"></script>
 <template>
   <div class="title-bar">
-    <p>lapsquash_viewer</p>
+    <v-app-bar>
+      <v-app-bar-nav-icon />
+    </v-app-bar>
   </div>
 </template>
 <style scoped lang="scss">

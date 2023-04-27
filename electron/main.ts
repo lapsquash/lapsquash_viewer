@@ -25,10 +25,7 @@ function bootstrap() {
   win = new BrowserWindow({
     frame: false,
     titleBarStyle: 'hidden',
-    titleBarOverlay: {
-      color: '#b22d00',
-      symbolColor: '#ffffff',
-    },
+    titleBarOverlay: true,
     webPreferences: {
       preload,
       nodeIntegrationInWorker: true,
