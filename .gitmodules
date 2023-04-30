@@ -1,0 +1,3 @@
+[submodule "plugins/analyzer"]
+	path = plugins/analyzer
+	url = https://github.com/lapsquash/lapsquash_analyzer

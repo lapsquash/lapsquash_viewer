@@ -8,8 +8,13 @@
   },
   "main": "dist-electron/main.js",
   "private": true,
+  "workspaces": [
+    "*",
+    "plugins/analyzer"
+  ],
   "scripts": {
     "dev": "nuxt dev",
+    "dev:server": "cd plugins/analyzer && yarn run dev",
     "build": "nuxi build --prerender && electron-builder",
     "postinstall": "nuxt prepare",
     "lint": "eslint --fix ."
@@ -32,6 +37,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.1.96",
+    "@trpc/client": "^10.23.0",
     "axios": "^1.3.4",
     "sass": "^1.58.3",
     "vite-plugin-vuetify": "^1.0.2",

@@ -1,5 +1,6 @@
 import { shell } from "electron";
-export const runAuthRedirect = (): void => {
+
+export const runAuthRedirect = async (): Promise<void> => {
   const config = useRuntimeConfig().public;
   const queries = {
     client_id: config.clientId,
@@ -15,5 +16,5 @@ export const runAuthRedirect = (): void => {
     "/oauth2/v2.0/authorize?",
     query,
   ];
-  shell.openExternal(url.join(""));
+  await shell.openExternal(url.join(""));
 };
