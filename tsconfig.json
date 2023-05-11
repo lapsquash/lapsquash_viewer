@@ -16,7 +16,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@analyzer/*": ["./plugins/analyzer/src/*"]
+      "@analyzer/*": ["./plugins/analyzer/src/*"],
+      "~/*": ["./*"]
     }
   }
 }
