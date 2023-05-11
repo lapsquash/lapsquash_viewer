@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import Coffee from "@/components/coffee.vue";
+import { runAuthRedirect } from 'helpers/model/auth';
+
 
 const isLoading = ref(true);
 
@@ -12,8 +13,9 @@ onMounted(() => (isLoading.value = false));
       A Vue3 project template with<br />
       Nuxt3 & Vuetify3
     </div>
+    <VBtn @click="runAuthRedirect">ログイン！</VBtn>
     <main>
-      <Coffee />
+      <CoffeeCard />
     </main>
   </div>
 </template>

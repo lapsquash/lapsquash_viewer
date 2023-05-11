@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import axios from "axios";
 
+// FIXME: この型定義はどこかに移動する
 type CoffeeType = {
   title: string;
   description: string;
@@ -16,12 +17,12 @@ const getCoffees = async () => {
   coffees.value = response.data;
 };
 
-getCoffees();
+onMounted(() => getCoffees());
 </script>
 
 <template>
   <body>
-    <div class="card-container">  
+    <div class="card-container">
       <div v-for="coffee in coffees" :key="coffee.id">
         <v-card height="100%">
           <v-img :src="coffee.image" height="200px" cover></v-img>
@@ -49,6 +50,7 @@ body {
   gap: 20px;
 
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
   @media screen and (max-width: 400px) {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }

@@ -11,3 +11,4 @@ dist
 dist-electron/
 build/
 release/
+assets/sample.lapsq
