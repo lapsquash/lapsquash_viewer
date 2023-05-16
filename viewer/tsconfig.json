@@ -1,5 +1,5 @@
 {
-  "extends": ["./.nuxt/tsconfig.json", "../tsconfig.base.json"],
+  "extends": ["./src/.nuxt/tsconfig.json"],
   "compilerOptions": {
     "strict": true,
     "allowUnusedLabels": false,
@@ -14,6 +14,13 @@
     "noUnusedParameters": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["../../analyzer/src/*"],
+      "@analyzer": ["../../analyzer/src/routes"],
+      "@/*": ["./*"]
+    }
+  },
+  "include": ["./src/**/*", "../../analyzer/src/routes"]
 }

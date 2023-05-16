@@ -1,5 +1,7 @@
-import { app, BrowserWindow } from "electron";
+/* eslint-disable dot-notation */
 import path from "path";
+
+import { app, BrowserWindow } from "electron";
 
 // The built directory structure
 //
@@ -24,7 +26,7 @@ const preload = path.join(process.env["DIST"], "preload.js");
 function bootstrap() {
   win = new BrowserWindow({
     frame: false,
-    titleBarStyle: 'hidden',
+    titleBarStyle: "hidden",
     titleBarOverlay: true,
     webPreferences: {
       preload,

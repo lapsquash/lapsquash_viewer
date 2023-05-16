@@ -4,9 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "build": "yarn workspace viewer run build",
-    "dev": "yarn workspace viewer run dev",
-    "dev:analyzer": "yarn workspace analyzer run dev"
+    "build": "yarn workspace @lapsquash/viewer run build",
+    "dev": "yarn workspace @lapsquash/viewer run dev",
+    "dev:analyzer": "yarn workspace @lapsquash/analyzer run dev"
   },
   "workspaces": {
     "packages": [

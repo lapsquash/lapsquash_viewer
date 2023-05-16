@@ -30,4 +30,5 @@ export default defineNuxtConfig({
       relayServerUrl: "",
     },
   },
+  rootDir: "src/",
 });

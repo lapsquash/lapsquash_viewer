@@ -3,7 +3,7 @@ asar: true
 directories:
   output: release/
 files:
-  - .output/**/*
+  - src/.output/**/*
   - dist-electron
 mac:
   artifactName: ${productName}_${version}.${ext}

@@ -1,13 +1,11 @@
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 
-import type { AppRouter } from "@analyzer/routes.ts";
+import type { AppRouter } from "@analyzer";
 
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: "http://localhost:3000/trpc",
+      url: "http://localhost:8787/trpc",
     }),
   ],
 });
-
-const a = await client.me.info.query();

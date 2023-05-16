@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 const drawer = ref<boolean>(false);
 const isLoading = ref<boolean>(true);
 
@@ -12,14 +11,19 @@ const items = [
 ];
 </script>
 <template>
-  <div>
+  <VApp>
     <v-app-bar>
       <div class="title-bar"></div>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute bottom temporary>
       <v-list nav dense>
-        <v-list-item v-for="item in items" :key="item.id" link :to="`${item.id}`">
+        <v-list-item
+          v-for="item in items"
+          :key="item.id"
+          link
+          :to="`${item.id}`"
+        >
           <v-list-item-content>
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
@@ -28,16 +32,17 @@ const items = [
     </v-navigation-drawer>
     <vMain>
       <div class="slot-container">
-        <VProgressLinear :indeterminate="isLoading" class="progress"></VProgressLinear>
+        <VProgressLinear
+          :indeterminate="isLoading"
+          class="progress"
+        ></VProgressLinear>
         <slot></slot>
       </div>
     </vMain>
-  </div>
+  </VApp>
 </template>
 <style scoped lang="scss">
 .slot-container {
-  
-
   .progress {
     position: fixed;
     top: var(--title-bar-height) !important;
