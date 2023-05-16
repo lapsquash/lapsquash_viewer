@@ -17,8 +17,6 @@ mac:
   artifactName: ${productName}_${version}.${ext}
   target:
     - dmg
-    -
-
 linux:
   executableName: desiredName
   artifactName: ${productName}-${version}.${ext}

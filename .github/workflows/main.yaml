@@ -28,9 +28,9 @@ jobs:
         uses: pr-mpt/actions-commit-hash@v2
 
       - name: 🔨 Prepare Node environment
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 19
 
       - name: 🎉 Install project dependencies
         run: yarn
@@ -45,11 +45,11 @@ jobs:
         uses: actions/upload-artifact@v3.1.1
         with:
           name: lapsquash_viewer_windows_${{ steps.sha.outputs.short }}_portable
-          path: release/win-unpacked
+          path: viewer/release/win-unpacked
 
       - name: 🗑️ Clean up artifacts
         shell: bash
-        run: npx rimraf "release/!(*.exe|*.deb|*.AppImage|*.dmg)"
+        run: npx rimraf "viewer/release/!(*.exe|*.deb|*.AppImage|*.dmg)"
 
       - name: ⬆️ Artifacts upload
         uses: actions/upload-artifact@v3.1.1
@@ -57,7 +57,7 @@ jobs:
           OS_NAME: ${{ matrix.os == 'windows-latest' && 'windows' || '' }}${{ matrix.os == 'macOS-latest' && 'macOS' || '' }}${{ matrix.os == 'ubuntu-latest' && 'linux' || '' }}
         with:
           name: lapsquash_viewer_${{ env.OS_NAME }}_${{ steps.sha.outputs.short }}
-          path: release
+          path: viewer/release
 
       - name: 🚚 Create release
         uses: softprops/action-gh-release@v1
@@ -65,4 +65,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: release
+          files: viewer/release

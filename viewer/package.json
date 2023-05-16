@@ -6,6 +6,7 @@
     "name": "lapsquash",
     "email": "wappon_28_dev@lapsquash.my.to"
   },
+  "repository": "lapsquash/lapsquash_viewer",
   "main": "dist-electron/main.js",
   "private": true,
   "scripts": {
