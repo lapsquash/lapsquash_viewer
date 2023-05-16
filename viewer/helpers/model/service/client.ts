@@ -1,6 +1,6 @@
 import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
 
-import type { AppRouter } from "@analyzer/routes";
+import type { AppRouter } from "@analyzer/routes.ts";
 
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
@@ -9,3 +9,5 @@ export const client = createTRPCProxyClient<AppRouter>({
     }),
   ],
 });
+
+const a = await client.me.info.query();

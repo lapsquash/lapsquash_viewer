@@ -3,12 +3,11 @@ import * as appAll from "vuetify/components";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 import { defaults } from "@/helpers/defaults";
-import { MAIN_THEME, mainTheme, mainDarkTheme } from "@/helpers/themes";
-
+import { MAIN_THEME, mainDarkTheme, mainTheme } from "@/helpers/themes";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
-          ssr: true,
+    ssr: true,
     defaults,
     components: {
       ...appAll,

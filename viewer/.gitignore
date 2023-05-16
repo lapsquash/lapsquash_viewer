@@ -8,4 +8,7 @@ node_modules
 dist
 .DS_Store
 
-node_modules/
+dist-electron/
+build/
+release/
+assets/sample.lapsq

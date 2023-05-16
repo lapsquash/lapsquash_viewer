@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { runAuthRedirect } from 'helpers/model/auth';
-
+import { runAuthRedirect } from "@/helpers/model/auth";
 
 const isLoading = ref(true);
 

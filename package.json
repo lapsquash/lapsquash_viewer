@@ -1,47 +1,17 @@
 {
-  "name": "lapsquash_viewer",
-  "description": "viewer for lapsquash",
+  "name": "lapsquash",
+  "description": "lapsquash",
   "version": "0.0.1",
-  "author": {
-    "name": "lapsquash",
-    "email": "wappon_28_dev@lapsquash.my.to"
-  },
-  "main": "dist-electron/main.js",
   "private": true,
-  "workspaces": [
-    "*",
-    "plugins/analyzer"
-  ],
   "scripts": {
-    "dev": "nuxt dev",
-    "dev:server": "cd plugins/analyzer && yarn run dev",
-    "build": "nuxi build --prerender && electron-builder",
-    "postinstall": "nuxt prepare",
-    "lint": "eslint --fix ."
+    "build": "yarn workspace viewer run build",
+    "dev": "yarn workspace viewer run dev",
+    "dev:analyzer": "yarn workspace analyzer run dev"
   },
-  "devDependencies": {
-    "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.54.1",
-    "@typescript-eslint/parser": "^5.54.1",
-    "electron": "^24.1.1",
-    "electron-builder": "^23.6.0",
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.7.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-vue": "^9.9.0",
-    "nuxt": "^3.2.3",
-    "nuxt-electron": "^0.4.5",
-    "typescript": "^5.0.4",
-    "vite-electron-plugin": "^0.8.2",
-    "vite-plugin-electron-renderer": "^0.14.0"
-  },
-  "dependencies": {
-    "@mdi/js": "^7.1.96",
-    "@trpc/client": "^10.23.0",
-    "axios": "^1.3.4",
-    "sass": "^1.58.3",
-    "vite-plugin-vuetify": "^1.0.2",
-    "vue-axios": "^3.5.2",
-    "vuetify": "^3.1.4"
+  "workspaces": {
+    "packages": [
+      "analyzer",
+      "viewer"
+    ]
   }
 }

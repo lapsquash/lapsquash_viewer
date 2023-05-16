@@ -21,7 +21,6 @@ export default defineNuxtConfig({
       "process.env.DEBUG": false,
     },
   },
-
   css: ["@/assets/main.scss"],
   runtimeConfig: {
     public: {
