@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@mdi/js": "^7.2.96",
-    "@trpc/client": "^10.26.0",
+    "@trpc/client": "^10.27.3",
     "@trpc/server": "^10.26.0",
     "axios": "^1.4.0",
     "sass": "^1.62.1",
