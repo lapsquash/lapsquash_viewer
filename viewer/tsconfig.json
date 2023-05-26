@@ -1,26 +1,11 @@
 {
-  "extends": ["./src/.nuxt/tsconfig.json"],
+  "extends": "./src/.nuxt/tsconfig.json",
   "compilerOptions": {
-    "strict": true,
-    "allowUnusedLabels": false,
-    "allowUnreachableCode": false,
-    "exactOptionalPropertyTypes": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": "./src",
     "paths": {
       "*": ["../../analyzer/src/*"],
       "@analyzer": ["../../analyzer/src/routes"],
       "@/*": ["./*"]
     }
   },
-  "include": ["./src/**/*", "../../analyzer/src/routes"]
+  "exclude": ["../../analyzer/src/**/*"]
 }

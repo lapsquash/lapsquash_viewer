@@ -45,4 +45,9 @@ export default defineNuxtConfig({
     },
   },
   rootDir: "src/",
+  typescript: {
+    tsConfig: {
+      extends: "@tsconfig/strictest/tsconfig.json",
+    },
+  },
 });
