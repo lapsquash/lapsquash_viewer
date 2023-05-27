@@ -6,7 +6,8 @@
   "scripts": {
     "build": "yarn workspace @lapsquash/viewer run build",
     "dev": "yarn workspace @lapsquash/viewer run dev",
-    "dev:analyzer": "yarn workspace @lapsquash/analyzer run dev"
+    "dev:analyzer": "yarn workspace @lapsquash/analyzer run dev",
+    "test:analyzer": "yarn workspace @lapsquash/analyzer run test"
   },
   "workspaces": {
     "packages": [
