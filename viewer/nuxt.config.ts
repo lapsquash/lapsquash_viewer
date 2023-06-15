@@ -1,7 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 import vuetify from "vite-plugin-vuetify";
 export default defineNuxtConfig({
-  modules: ["nuxt-electron"],
+  modules: ["nuxt-electron", "@pinia/nuxt"],
   electron: {
     build: [
       {

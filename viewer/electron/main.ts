@@ -1,6 +1,11 @@
 import { app, BrowserWindow } from "electron";
 import path from "path";
 
+const {
+  default: installExtension,
+  VUEJS_DEVTOOLS,
+} = require("electron-devtools-installer");
+
 // The built directory structure
 //
 // ├─┬ dist-electron
@@ -38,6 +43,10 @@ function bootstrap() {
   if (process.env.VITE_DEV_SERVER_URL) {
     win.loadURL(process.env.VITE_DEV_SERVER_URL);
     win.webContents.openDevTools();
+
+    installExtension(VUEJS_DEVTOOLS)
+      .then((name) => console.log(name))
+      .catch((err) => console.log(err));
   } else {
     win.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
   }

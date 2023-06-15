@@ -12,7 +12,8 @@ onMounted(() => (isLoading.value = false));
       A Vue3 project template with<br />
       Nuxt3 & Vuetify3
     </div>
-    <VBtn @click="runAuthRedirect">ログイン！</VBtn>
+    <VBtn @click="runAuthRedirect">ログイン！</VBtn> <br /><br />
+    <VBtn @click="$router.push('/demo')">pinia ページへ</VBtn>
     <main>
       <CoffeeCard />
     </main>
