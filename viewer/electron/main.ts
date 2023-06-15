@@ -1,10 +1,9 @@
 import { app, BrowserWindow } from "electron";
-import path from "path";
-
-const {
-  default: installExtension,
+import {
+  default as installExtension,
   VUEJS_DEVTOOLS,
-} = require("electron-devtools-installer");
+} from "electron-devtools-installer";
+import path from "path";
 
 // The built directory structure
 //
