@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, dialog, ipcMain } from "electron";
 import {
   default as installExtension,
   VUEJS_DEVTOOLS,
@@ -32,10 +32,8 @@ function bootstrap() {
     titleBarOverlay: true,
     webPreferences: {
       preload,
-      nodeIntegrationInWorker: true,
-      contextIsolation: false,
       nodeIntegration: true,
-      webSecurity: false,
+      contextIsolation: false,
     },
   });
 
@@ -52,3 +50,14 @@ function bootstrap() {
 }
 
 app.whenReady().then(bootstrap);
+
+ipcMain.handle("open-dialog", async (_e, _arg) => {
+  return dialog
+    .showOpenDialog(win, {
+      properties: ["openFile"],
+    })
+    .then((result) => {
+      if (result.canceled) return "";
+      return result.filePaths[0];
+    });
+});

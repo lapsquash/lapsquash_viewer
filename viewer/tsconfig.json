@@ -1,6 +1,9 @@
 {
   "extends": "./src/.nuxt/tsconfig.json",
   "compilerOptions": {
+    "lib": ["DOM"],
+    "esModuleInterop": true,
+    "preserveSymlinks": true,
     "paths": {
       "*": ["../../analyzer/src/*"],
       "@analyzer": ["../../analyzer/src/routes"],
