@@ -1,1 +1,0 @@
-../../../../electron/ipc.d.ts

@@ -13,13 +13,13 @@ const saveConfig = () => {
   };
 };
 
-const openDialog = async () => (filePath.value = await window.openDialog());
+const readConfig = async () => await window.saveConfig({});
 </script>
 <template>
   {{ counter.count }} <br />
   {{ filePath }} <br />
   <VBtn @click="counter.count++">Increment</VBtn>
   <VBtn @click="saveConfig">Save</VBtn>
-  <VBtn @click="openDialog">dialog</VBtn>
+  <VBtn @click="readConfig">dialog</VBtn>
 </template>
 <style scoped lang="scss"></style>
