@@ -1,11 +1,12 @@
-import { BrowserWindow, app, dialog, ipcMain } from "electron";
+import { Config, configSchema } from "@/helpers/model/types/config";
+import { IpcIHData } from "@/helpers/model/types/ipc";
+import { BrowserWindow, IpcMainInvokeEvent, app, ipcMain } from "electron";
 import {
   VUEJS_DEVTOOLS,
   default as installExtension,
 } from "electron-devtools-installer";
 import { mkdir, readFile, writeFile } from "fs/promises";
 import path from "path";
-import { Config, configSchema } from "../helpers/model/types/config";
 
 // The built directory structure
 //
@@ -53,28 +54,47 @@ function bootstrap() {
 
 app.whenReady().then(bootstrap);
 
-ipcMain.handle("open-dialog", async (_e, _arg) => {
-  return dialog
-    .showOpenDialog(win, {
-      properties: ["openFile"],
-    })
-    .then((result) => {
-      if (result.canceled) return "";
-      return result.filePaths[0];
-    });
-});
+function ipcMainHandle<T extends keyof IpcIHData>(
+  channel: T,
+  listener: (
+    event: IpcMainInvokeEvent,
+    ...args: IpcIHData[T]["args"]
+  ) => IpcIHData[T]["return"] | Promise<IpcIHData[T]["return"]>
+): void {
+  console.log(`${channel} handled`);
+  ipcMain.handle(channel, listener);
+}
+
+/*
+  以下, ipcMainHandleの呼び出し
+*/
 
 const configDir = `${process.env["APPDATA"]}/lapsquash/viewer`;
 const configPath = `${process.env["APPDATA"]}/lapsquash/viewer/config.json`;
 
-ipcMain.handle("save-config", async (e, arg: Config): Promise<void> => {
+ipcMainHandle("SET_CONFIG", async (_, arg: Config): Promise<void> => {
   configSchema.parse(arg);
   await mkdir(configDir, { recursive: true });
   await writeFile(configPath, JSON.stringify(arg));
 });
 
-ipcMain.handle("read-config", async (e, _arg): Promise<Config> => {
-  console.log(configDir);
-  const data = await readFile(configPath, "utf-8");
+ipcMainHandle("GET_CONFIG", async () => {
+  let data: string = "";
+  try {
+    data = await readFile(configPath, "utf-8");
+  } catch (err: unknown) {
+    const _err = err as Error & NodeJS.ErrnoException;
+    if (_err.code === "ENOENT") {
+      console.warn("Config file not found");
+
+      await mkdir(configDir, { recursive: true });
+      await writeFile(configPath, "{}");
+    }
+  }
+
   return configSchema.parse(JSON.parse(data));
+});
+
+ipcMain.handle("TEST", async () => {
+  console.log("test invoked!");
 });

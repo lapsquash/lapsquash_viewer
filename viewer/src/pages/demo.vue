@@ -7,19 +7,14 @@ let filePath = ref("");
 const counter = useCounterStore();
 const config = useConfigStore();
 
-const saveConfig = () => {
-  config.$state.data = {
-    credential: "12",
-  };
-};
-
-const readConfig = async () => await window.saveConfig({});
+const getConfig = async () => console.log(await window.getConfig());
+const test = () => window.test();
 </script>
 <template>
   {{ counter.count }} <br />
   {{ filePath }} <br />
   <VBtn @click="counter.count++">Increment</VBtn>
-  <VBtn @click="saveConfig">Save</VBtn>
-  <VBtn @click="readConfig">dialog</VBtn>
+  <VBtn @click="getConfig">getConfig</VBtn>
+  <VBtn @click="test">test</VBtn>
 </template>
 <style scoped lang="scss"></style>
