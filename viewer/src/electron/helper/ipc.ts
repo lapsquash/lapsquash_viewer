@@ -22,7 +22,7 @@ function ipcMainHandle(
 const configDir = `${process.env["APPDATA"]}/lapsquash/viewer`;
 const configPath = `${process.env["APPDATA"]}/lapsquash/viewer/config.json`;
 
-ipcMainHandle("SET_CONFIG", async (_, arg: Config): Promise<void> => {
+ipcMainHandle("UPDATE_CONFIG", async (_, arg: Config): Promise<void> => {
   configSchema.parse(arg);
   await mkdir(configDir, { recursive: true });
   await writeFile(configPath, JSON.stringify(arg));

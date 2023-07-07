@@ -1,16 +1,25 @@
 import { defineStore } from "pinia";
 import { Config } from "../types/config";
 
-export const useConfigStore = defineStore("useConfigStore", () => {
-  const data = ref<Config>({});
+export const useConfigStore = defineStore("config", async () => {
+  const data = ref<Config>(await window.getConfig());
+
+  // hook
+  watch(
+    () => data.value,
+    (value) => {
+      console.log("config updated");
+      window.updateConfig(value);
+    }
+  );
 
   // action
-  function setConfig(config: Config): void {
+  function updateConfig(config: Config): void {
     data.value = config;
   }
 
   return {
     data,
-    setConfig,
+    updateConfig,
   };
 });

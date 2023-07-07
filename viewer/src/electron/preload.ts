@@ -9,6 +9,6 @@ function ipcRendererInvoke<T extends keyof IpcIHData>(
   return ipcRenderer.invoke(channel, ...args);
 }
 
-window.setConfig = async (config) =>
-  await ipcRendererInvoke("SET_CONFIG", config);
+window.updateConfig = async (config) =>
+  await ipcRendererInvoke("UPDATE_CONFIG", config);
 window.getConfig = async () => await ipcRendererInvoke("GET_CONFIG");

@@ -6,13 +6,8 @@ export type IpcIHData = {
     return: Promise<Config>;
   };
 
-  SET_CONFIG: {
+  UPDATE_CONFIG: {
     args: [Config];
     return: Promise<void>;
-  };
-
-  TEST: {
-    args: [];
-    return: void;
   };
 };
