@@ -1,23 +1,6 @@
-import { IpcMainInvokeEvent, ipcMain } from "electron";
 import { mkdir, readFile, writeFile } from "fs/promises";
+import { ipcMainHandle } from "../../helpers/model/ipc";
 import { Config, configSchema } from "../../helpers/model/types/config";
-import { IpcIHData } from "../../helpers/model/types/ipc";
-
-function ipcMainHandle<T extends keyof IpcIHData>(
-  channel: T,
-  listener: (
-    event: IpcMainInvokeEvent,
-    ...args: IpcIHData[T]["args"]
-  ) => IpcIHData[T]["return"]
-): void;
-
-function ipcMainHandle(
-  channel: string,
-  listener: (event: IpcMainInvokeEvent, ...args: unknown[]) => unknown
-): void {
-  console.log(`ipcMainHandle: ${channel}`);
-  ipcMain.handle(channel, listener);
-}
 
 const configDir = `${process.env["APPDATA"]}/lapsquash/viewer`;
 const configPath = `${process.env["APPDATA"]}/lapsquash/viewer/config.json`;

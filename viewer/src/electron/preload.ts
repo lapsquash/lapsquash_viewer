@@ -1,5 +1,6 @@
-import { IpcIHData } from "@/helpers/model/types/ipc";
+// note: ここで `@` import を行わない！！！
 import { ipcRenderer } from "electron";
+import { IpcIHData, ipcRendererOn } from "../helpers/model/ipc";
 
 function ipcRendererInvoke<T extends keyof IpcIHData>(
   channel: T,
@@ -11,4 +12,10 @@ function ipcRendererInvoke<T extends keyof IpcIHData>(
 
 window.updateConfig = async (config) =>
   await ipcRendererInvoke("UPDATE_CONFIG", config);
+
 window.getConfig = async () => await ipcRendererInvoke("GET_CONFIG");
+
+window.onReceivedIPCMsg = (channel, callback) => {
+  console.log(`onReceivedIPCMsg: ${channel}`);
+  return ipcRendererOn(channel, callback);
+};
