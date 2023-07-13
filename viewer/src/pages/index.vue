@@ -8,10 +8,6 @@ onMounted(() => (isLoading.value = false));
 
 <template>
   <div>
-    <div class="wide-title">
-      A Vue3 project template with<br />
-      Nuxt3 & Vuetify3
-    </div>
     <VBtn @click="runAuthRedirect">ログイン！</VBtn>
     <main>
       <CoffeeCard />

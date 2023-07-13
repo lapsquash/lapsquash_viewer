@@ -14,5 +14,8 @@
       "analyzer",
       "viewer"
     ]
+  },
+  "dependencies": {
+    "pinia": "^2.1.3"
   }
 }

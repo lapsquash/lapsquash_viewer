@@ -23,9 +23,6 @@ const preload = path.join(process.env.DIST, "preload.js");
 
 function bootstrap() {
   win = new BrowserWindow({
-    frame: false,
-    titleBarStyle: "hidden",
-    titleBarOverlay: true,
     webPreferences: {
       preload,
       nodeIntegrationInWorker: true,
@@ -41,6 +38,8 @@ function bootstrap() {
   } else {
     win.loadFile(path.join(process.env.VITE_PUBLIC!, "index.html"));
   }
+  win.setMenuBarVisibility(false);
 }
 
 app.whenReady().then(bootstrap);
+

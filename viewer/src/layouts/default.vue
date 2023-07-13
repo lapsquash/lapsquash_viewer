@@ -6,7 +6,7 @@ onMounted(() => (isLoading.value = false));
 
 const items = [
   { id: "/", title: "Home" },
-  { id: "projects", title: "Projects" },
+  { id: "/projects/projects", title: "Projects" },
   { id: "viewer", title: "Viewer" },
 ];
 </script>
@@ -24,13 +24,10 @@ const items = [
           link
           :to="`${item.id}`"
         >
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <vMain>
       <div class="slot-container">
         <VProgressLinear
           :indeterminate="isLoading"
@@ -38,7 +35,6 @@ const items = [
         ></VProgressLinear>
         <slot></slot>
       </div>
-    </vMain>
   </VApp>
 </template>
 <style scoped lang="scss">
