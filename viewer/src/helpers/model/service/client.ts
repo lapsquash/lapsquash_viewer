@@ -6,7 +6,7 @@ export const analyzer = {
   public: createTRPCProxyClient<AppRouter>({
     links: [
       httpBatchLink({
-        url: "http://127.0.0.1:8787/trpc",
+        url: useRuntimeConfig().public.relayServerUrl,
       }),
     ],
   }),
@@ -14,7 +14,7 @@ export const analyzer = {
     createTRPCProxyClient<AppRouter>({
       links: [
         httpBatchLink({
-          url: "http://127.0.0.1:8787/trpc",
+          url: useRuntimeConfig().public.relayServerUrl,
           headers: {
             authorization: `Bearer ${credential}`,
           },

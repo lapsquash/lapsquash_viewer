@@ -1,21 +1,28 @@
 import { inferAsyncReturnType } from "@trpc/server";
 import { defineStore } from "pinia";
 import { analyzer } from "../service/client";
+import { useConfigStore } from "./config";
+
+const apiGetMe = (credential: string) =>
+  analyzer.protected(credential).me.info.query();
+type Info = inferAsyncReturnType<typeof apiGetMe>;
 
 export const useUserStore = defineStore("user", () => {
-  //
-  const meInfoResponse = () => analyzer.protected("").me.info.query();
-
   // state
-  const meInfo = ref<inferAsyncReturnType<typeof meInfoResponse>>();
+  const info = ref<Info>();
 
-  // actions
-  async function getMeInfo(): Promise<void> {
-    meInfo.value = await meInfoResponse();
-  }
+  // Actions
+  const init = async () => {
+    const credential = (await useConfigStore()).data.value.credential;
+    if (!credential) {
+      throw new Error("credential is not set");
+    }
+
+    info.value = await apiGetMe(credential);
+  };
 
   return {
-    meInfo,
-    getMeInfo,
+    info,
+    init,
   };
 });

@@ -2,14 +2,16 @@ import { defineStore } from "pinia";
 import { Config } from "../types/config";
 
 export const useConfigStore = defineStore("config", async () => {
-  const data = ref<Config>(await window.getConfig());
+  const data = ref<Config>({
+    credential: "",
+  });
 
   // hook
   watch(
     () => data.value,
     (value) => {
       console.log("config updated");
-      window.updateConfig(value);
+      window.updateConfig(value ?? {});
     }
   );
 
