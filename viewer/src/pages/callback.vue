@@ -30,10 +30,9 @@ onMounted(async () => {
     return;
   }
 
-  (await config).updateConfig({ credential });
+  config.updateConfig({ credential });
 
   status.value = "success";
-  router.push({ path: "/account" });
 });
 </script>
 <template>

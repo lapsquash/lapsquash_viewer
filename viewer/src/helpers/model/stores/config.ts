@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import { Config } from "../types/config";
 
-export const useConfigStore = defineStore("config", async () => {
+export const useConfigStore = defineStore("config", () => {
   const data = ref<Config>({
     credential: "",
   });
