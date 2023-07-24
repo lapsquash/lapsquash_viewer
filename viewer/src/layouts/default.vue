@@ -13,8 +13,8 @@ const items = [
 <template>
   <VApp>
     <v-app-bar>
-      <div class="title-bar"></div>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <VBtn icon="mdi-account"></VBtn>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute bottom temporary>
       <v-list nav dense>
@@ -28,13 +28,14 @@ const items = [
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-      <div class="slot-container">
-        <VProgressLinear
-          :indeterminate="isLoading"
-          class="progress"
-        ></VProgressLinear>
-        <slot></slot>
-      </div>
+    <div class="slot-container">
+      <VProgressLinear
+        :indeterminate="isLoading"
+        class="progress"
+      ></VProgressLinear>
+      <v-main></v-main>
+      <slot></slot>
+    </div>
   </VApp>
 </template>
 <style scoped lang="scss">

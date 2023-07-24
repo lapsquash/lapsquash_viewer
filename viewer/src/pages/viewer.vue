@@ -1,5 +1,8 @@
+<script setup lang="ts">
+const route = useRoute();
+// パスパラメータよりid取得
+const { id } = route.params;
+</script>
 <template>
-  <div>
-    <a>dadsa</a>
-  </div>
+  <h1>プロジェクトID: {{ id }}</h1>
 </template>

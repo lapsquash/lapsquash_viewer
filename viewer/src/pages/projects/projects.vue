@@ -3,19 +3,25 @@ import { ref } from "vue";
 
 export default {
   setup() {
-    const items = ref([
-      { title: "Project 1", tag: ["tag1", "egg"], uuid: "1234" },
-      { title: "Project 2", tag: ["tag2"], uuid: "2345" },
-      { title: "Project 3", tag: ["tag3"], uuid: "3456" },
-      { title: "Project 4", tag: ["tag4"], uuid: "4567" },
+    interface Project {
+      title: string;
+      text: string;
+      tag: string[];
+      uuid: number;
+    }
+
+    const items = ref<Project[]>([
+      { title: "Project 1", text: "test4", tag: ["tag1", "egg"], uuid: 1234 },
+      { title: "Project 2", text: "test3", tag: ["tag2"], uuid: 2345 },
+      { title: "Project 3", text: "test2", tag: ["tag3"], uuid: 3456 },
+      { title: "Project 4", text: "test1", tag: ["tag4"], uuid: 4567 },
     ]);
 
     const router = useRouter();
 
-    const goToProject = () => {
-      // ここでプロジェクトのIDを受け取ってprojectIDのページに遷移する
+    const goToProject = (uuid: any) => {
       router.push({
-        path: `/projects/:projectID`,
+        path: `/projects/${uuid}`,
       });
     };
 
@@ -41,7 +47,12 @@ export default {
           lg="4"
           xl="3"
         >
-          <v-card class="rounded-lg" @click="goToProject()">
+          <v-card
+            class="rounded-lg"
+            @click="goToProject(item.uuid)"
+            :key="item.uuid"
+            color="#E3EDF7"
+          >
             <v-img
               src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
               height="150px"
@@ -49,12 +60,7 @@ export default {
             ></v-img>
             <v-card-title>{{ item.title }}</v-card-title>
             <v-card-text>
-              <v-list>
-                <v-list-item>
-                  <v-list-item-title>{{ item.title }}</v-list-item-title>
-                </v-list-item>
-              </v-list>
-              <v-divider class="mx-4"></v-divider>
+              {{ item.text }}
             </v-card-text>
             <v-chip-group>
               <v-chip
@@ -73,3 +79,12 @@ export default {
     </v-container>
   </div>
 </template>
+
+<style>
+.v-card {
+  background-color: #e3edf7;
+  filter: drop-shadow(2px 2px 4px rgba(114, 142, 171, 0.1))
+    drop-shadow(-6px -6px 20px #fff)
+    drop-shadow(4px 4px 20px rgba(111, 140, 176, 0.41));
+}
+</style>

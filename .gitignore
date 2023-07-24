@@ -11,3 +11,7 @@ dist
 
 node_modules/
 viewer/src/assets/sample.lapsq
+viewer/src/assets/sample/assets/0.mp4
+viewer/src/assets/sample/assets/1.mp4
+viewer/src/assets/sample/assets/2.mp4
+viewer/src/assets/sample/assets/3.mp4
