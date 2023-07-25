@@ -10,34 +10,40 @@ console.log(router.params.uuid);
       <v-row>
         <v-col>
           <v-row>
-            <v-col cols="12" xs="12" sm="12" md="12" lg="8" xl="8">
-              <v-card
-              class="video-player">
-                <video
-                  src="../../assets/sample/assets/0.mp4"
-                  autoplay="true"
-                  loop="true"
-                  muted
-                  controls
-                ></video>
+            <v-col cols="12" xs="12" sm="12" md="8" lg="8" xl="8">
+              <v-card>
+                <div class="video-player">
+                  <video
+                    src="../../assets/sample/assets/0.mp4"
+                    muted
+                    loop
+                    autoplay
+                  ></video>
+                  </div>
+              </v-card>
+            </v-col>
+            <v-col>
+              <v-card>
+                <v-card-title>タイムライン</v-card-title>
+                <v-card-text>ここはタイムラインです。</v-card-text>
               </v-card>
             </v-col>
           </v-row>
-          <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="3">
-            <v-card>
-              <v-card-title>説明</v-card-title>
-              <v-card-text>ここはプロジェクトの説明です。</v-card-text>
-            </v-card>
-          </v-col>
           <v-row>
-            <v-col>
-              <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="3">
+            <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4">
+              <v-card>
+                <v-card-title>説明</v-card-title>
+                <v-card-text>ここはプロジェクトの説明です。<br>横とサイズ合わせたい。</v-card-text>
+              </v-card>
+            </v-col>
+            <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4" class="pa-0">
+              <v-col>
                 <v-card>
                   <v-card-title>アクション</v-card-title>
                   <v-card-text>行動の説明</v-card-text>
                 </v-card>
               </v-col>
-              <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="3">
+              <v-col>
                 <v-card>
                   <v-card-title>タグ</v-card-title>
                   <v-tab>a</v-tab>
@@ -51,7 +57,7 @@ console.log(router.params.uuid);
   </div>
 </template>
 
-<style>
+<style scoped lang="scss">
 .v-card-title {
   font-size: 12px;
 }
@@ -59,12 +65,23 @@ console.log(router.params.uuid);
   font-size: 16px;
 }
 
-.video {
-  object-fit: cover;
-}
-
 .video-player {
   aspect-ratio: 16/9;
   z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  container-type: inline-size;
 }
+
+// FIXME: これでいいのか？
+@container (max-width: 2000px){
+ video {
+  height: 100%;
+  width: auto;
+ }
+
+}
+
+
 </style>
