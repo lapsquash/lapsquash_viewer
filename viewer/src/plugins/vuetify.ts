@@ -1,5 +1,4 @@
 import { createVuetify } from "vuetify";
-import * as appAll from "vuetify/components";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 import { defaults } from "@/helpers/defaults";
@@ -9,9 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     ssr: true,
     defaults,
-    components: {
-      ...appAll,
-    },
+    components: {},
     display: {
       mobileBreakpoint: "sm",
     },

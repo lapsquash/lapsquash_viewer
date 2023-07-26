@@ -1,4 +1,5 @@
 <script setup>
+import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
 const router = useRoute();
 console.log(router.params.uuid);
 </script>
@@ -19,33 +20,43 @@ console.log(router.params.uuid);
                     loop
                     autoplay
                   ></video>
-                  </div>
+                </div>
               </v-card>
             </v-col>
             <v-col>
-              <v-card>
-                <v-card-title>タイムライン</v-card-title>
-                <v-card-text>ここはタイムラインです。</v-card-text>
-              </v-card>
+              <v-sheet height="300">
+                <timeline></timeline>
+              </v-sheet>
             </v-col>
           </v-row>
           <v-row>
             <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4">
               <v-card>
-                <v-card-title>説明</v-card-title>
-                <v-card-text>ここはプロジェクトの説明です。<br>横とサイズ合わせたい。</v-card-text>
+                <v-card-title>
+                  <v-icon :icon="mdiMenu" size="x-small"></v-icon>
+                  説明
+                </v-card-title>
+                <v-card-text
+                  >ここはプロジェクトの説明です。<br />横とサイズ合わせたい。</v-card-text
+                >
               </v-card>
             </v-col>
             <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4" class="pa-0">
               <v-col>
                 <v-card>
-                  <v-card-title>アクション</v-card-title>
+                  <v-card-title
+                    ><v-icon :icon="mdiExclamationThick" size="x-small"></v-icon
+                    >アクション</v-card-title
+                  >
                   <v-card-text>行動の説明</v-card-text>
                 </v-card>
               </v-col>
               <v-col>
                 <v-card>
-                  <v-card-title>タグ</v-card-title>
+                  <v-card-title
+                    ><v-icon :icon="mdiBookmark" size="x-small"></v-icon
+                    >タグ</v-card-title
+                  >
                   <v-tab>a</v-tab>
                 </v-card>
               </v-col>
@@ -60,6 +71,7 @@ console.log(router.params.uuid);
 <style scoped lang="scss">
 .v-card-title {
   font-size: 12px;
+  color: gray;
 }
 .v-card-text {
   font-size: 16px;
@@ -75,13 +87,10 @@ console.log(router.params.uuid);
 }
 
 // FIXME: これでいいのか？
-@container (max-width: 2000px){
- video {
-  height: 100%;
-  width: auto;
- }
-
+@container (max-width: 2000px) {
+  video {
+    height: 100%;
+    width: auto;
+  }
 }
-
-
 </style>

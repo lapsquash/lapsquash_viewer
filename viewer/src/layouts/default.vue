@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { mdiAccount } from "@mdi/js";
+
 const drawer = ref<boolean>(false);
 const isLoading = ref<boolean>(true);
 
@@ -14,7 +16,7 @@ const items = [
   <VApp>
     <v-app-bar>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <VBtn icon="mdi-account"></VBtn>
+      <VBtn :icon="mdiAccount"></VBtn>
     </v-app-bar>
     <v-navigation-drawer v-model="drawer" absolute bottom temporary>
       <v-list nav dense>
@@ -53,5 +55,21 @@ const items = [
   -webkit-app-region: drag;
   position: fixed;
   height: 20px;
+}
+
+v-navigation-drawer {
+  transition: transform 0.5s ease-in-out;
+}
+
+v-list-item {
+  transition: transform 0.5s ease-in-out;
+}
+
+v-navigation-drawer--open {
+  transform: translateX(100%);
+}
+
+v-list-item--open {
+  transform: translateY(-100%);
 }
 </style>
