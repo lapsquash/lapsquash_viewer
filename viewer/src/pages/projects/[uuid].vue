@@ -1,80 +1,89 @@
 <script setup>
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
 const router = useRoute();
+let uuid = router.params.uuid;
 console.log(router.params.uuid);
 </script>
 
 <template>
-  <div>
-    <p>プロジェクトID: {{ $route.params["uuid"] }}</p>
-    <v-container>
+  <div class="grid ma-12">
+    <section class="main">
       <v-row>
-        <v-col>
-          <v-row>
-            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="8">
-              <v-card>
-                <div class="video-player">
-                  <video
-                    src="../../assets/sample/assets/0.mp4"
-                    muted
-                    loop
-                    autoplay
-                  ></video>
-                </div>
-              </v-card>
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="4">
-              <v-card>
-                <v-card-title>
-                  <v-icon :icon="mdiMenu" size="x-small"></v-icon>
-                  説明
-                </v-card-title>
-                <v-card-text
-                  >ここはプロジェクトの説明です。<br />横とサイズ合わせたい。</v-card-text
-                >
-              </v-card>
-            </v-col>
-            <v-col
-              cols="12"
-              xs="12"
-              sm="12"
-              md="12"
-              lg="12"
-              xl="4"
-              class="pa-0"
+        <v-col cols="12">
+          <v-card>
+            <div class="video-player">
+              <video
+                :src="`../../assets/sample/assets/${uuid}.mp4`"
+                muted
+                loop
+                autoplay
+              ></video>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
+          <v-card>
+            <v-card-title>
+              <v-icon :icon="mdiMenu" size="x-small"></v-icon>
+              説明
+            </v-card-title>
+            <v-card-text
+              >ここはプロジェクトの説明です。<br />横とサイズ合わせたい。</v-card-text
             >
-              <v-col>
-                <v-card>
-                  <v-card-title
-                    ><v-icon :icon="mdiExclamationThick" size="x-small"></v-icon
-                    >アクション</v-card-title
-                  >
-                  <v-card-text>行動の説明</v-card-text>
-                </v-card>
-              </v-col>
-              <v-col>
-                <v-card>
-                  <v-card-title
-                    ><v-icon :icon="mdiBookmark" size="x-small"></v-icon
-                    >タグ</v-card-title
-                  >
-                  <v-tab>a</v-tab>
-                </v-card>
-              </v-col>
+          </v-card>
+        </v-col>
+        <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
+          <v-row>
+            <v-col>
+              <v-card>
+                <v-card-title
+                  ><v-icon :icon="mdiExclamationThick" size="x-small"></v-icon
+                  >アクション</v-card-title
+                >
+                <v-card-text>行動の説明</v-card-text>
+              </v-card>
             </v-col>
-            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="4">
-              <ToggleBtn></ToggleBtn>
+            <v-col>
+              <v-card>
+                <v-card-title
+                  ><v-icon :icon="mdiBookmark" size="x-small"></v-icon
+                  >タグ</v-card-title
+                >
+                <v-tab>a</v-tab>
+              </v-card>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
-    </v-container>
+    </section>
+    <section class="timeline">
+      <v-col cols="12">
+        <ToggleBtn></ToggleBtn>
+      </v-col>
+    </section>
   </div>
 </template>
 
 <style scoped lang="scss">
+.grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 2fr 1fr;
+}
+
+.timeline {
+  padding: 2%;
+  border-radius: 10px;
+}
+
+@media (max-width: 1500px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .v-card-title {
   font-size: 12px;
   color: gray;
