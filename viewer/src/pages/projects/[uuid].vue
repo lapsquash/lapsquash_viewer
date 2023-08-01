@@ -11,7 +11,7 @@ console.log(router.params.uuid);
       <v-row>
         <v-col>
           <v-row>
-            <v-col cols="12" xs="12" sm="12" md="8" lg="8" xl="8">
+            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="8">
               <v-card>
                 <div class="video-player">
                   <video
@@ -23,14 +23,9 @@ console.log(router.params.uuid);
                 </div>
               </v-card>
             </v-col>
-            <v-col>
-              <v-sheet height="300">
-                <timeline></timeline>
-              </v-sheet>
-            </v-col>
           </v-row>
           <v-row>
-            <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4">
+            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="4">
               <v-card>
                 <v-card-title>
                   <v-icon :icon="mdiMenu" size="x-small"></v-icon>
@@ -41,7 +36,15 @@ console.log(router.params.uuid);
                 >
               </v-card>
             </v-col>
-            <v-col cols="12" xs="6" sm="6" md="4" lg="4" xl="4" class="pa-0">
+            <v-col
+              cols="12"
+              xs="12"
+              sm="12"
+              md="12"
+              lg="12"
+              xl="4"
+              class="pa-0"
+            >
               <v-col>
                 <v-card>
                   <v-card-title
@@ -60,6 +63,9 @@ console.log(router.params.uuid);
                   <v-tab>a</v-tab>
                 </v-card>
               </v-col>
+            </v-col>
+            <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="4">
+              <ToggleBtn></ToggleBtn>
             </v-col>
           </v-row>
         </v-col>

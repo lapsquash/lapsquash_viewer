@@ -5,21 +5,24 @@ const selectedIndex = ref(0);
   <div>
     <v-row>
       <v-col>
-        <v-row>
+        <v-row justify="center">
           <v-btn-toggle
             rounded="xl"
             mandatory
             v-model="selectedIndex"
             color="blue"
           >
-            <v-btn>タイムライン表示</v-btn>
-            <v-btn>ダイジェスト表示</v-btn>
+            <v-btn @click="selectedIndex = 0">タイムライン表示</v-btn>
+            <v-btn @click="selectedIndex = 1">ダイジェスト表示</v-btn>
           </v-btn-toggle>
         </v-row>
-        <v-row>
-          <v-card>
-            <v-card-text>text</v-card-text>
-          </v-card>
+        <v-row class="pa-12" justify="center">
+          <div v-if="selectedIndex === 0" class="width100">
+            <ScreenTimeline></ScreenTimeline>
+          </div>
+          <div v-if="selectedIndex === 1" class="width100">
+            <ScreenDigest></ScreenDigest>
+          </div>
         </v-row>
       </v-col>
     </v-row>
@@ -34,5 +37,9 @@ const selectedIndex = ref(0);
 
 .v-btn {
   border-radius: 0;
+}
+
+.width100 {
+  width: 100%;
 }
 </style>
