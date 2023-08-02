@@ -1,5 +1,7 @@
 <script setup>
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
+import manifest from "../../assets/sample/manifest.json";
+const date = new Date(manifest.startWith);
 const router = useRoute();
 let uuid = router.params.uuid;
 console.log(router.params.uuid);
@@ -24,19 +26,20 @@ console.log(router.params.uuid);
       </v-row>
       <v-row>
         <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
+          <p class="title">{{ manifest.name }}</p>
           <v-card>
             <v-card-title>
               <v-icon :icon="mdiMenu" size="x-small"></v-icon>
-              説明
+              説明 - {{ date }}
             </v-card-title>
-            <v-card-text
-              >ここはプロジェクトの説明です。<br />横とサイズ合わせたい。</v-card-text
+            <v-card-text>
+              {{ manifest.description}}</v-card-text
             >
           </v-card>
         </v-col>
-        <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
+        <v-col>
           <v-row>
-            <v-col>
+            <v-col cols="12" xs="12" sm="12" md="6" lg="6" xl="6">
               <v-card>
                 <v-card-title
                   ><v-icon :icon="mdiExclamationThick" size="x-small"></v-icon
@@ -84,6 +87,10 @@ console.log(router.params.uuid);
   }
 }
 
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
 .v-card-title {
   font-size: 12px;
   color: gray;
