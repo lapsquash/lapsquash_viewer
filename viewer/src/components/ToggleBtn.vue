@@ -33,10 +33,11 @@ const selectedIndex = ref(0);
   filter: drop-shadow(2px 2px 4px rgba(114, 142, 171, 0.1))
     drop-shadow(-6px -6px 20px #fff)
     drop-shadow(4px 4px 20px rgba(111, 140, 176, 0.41));
+  border-radius: 0%;
 }
 
 .v-btn {
-  border-radius: 0;
+  border-radius: 0% !important;
 }
 
 .width100 {
