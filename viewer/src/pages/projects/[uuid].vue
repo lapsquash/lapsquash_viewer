@@ -32,9 +32,7 @@ console.log(router.params.uuid);
               <v-icon :icon="mdiMenu" size="x-small"></v-icon>
               説明 - {{ date }}
             </v-card-title>
-            <v-card-text>
-              {{ manifest.description}}</v-card-text
-            >
+            <v-card-text> {{ manifest.description }}</v-card-text>
           </v-card>
         </v-col>
         <v-col>

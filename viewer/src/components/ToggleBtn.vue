@@ -16,7 +16,7 @@ const selectedIndex = ref(0);
             <v-btn @click="selectedIndex = 1">ダイジェスト表示</v-btn>
           </v-btn-toggle>
         </v-row>
-        <v-row class="pa-12" justify="center">
+        <v-row class="pa-12 scroll" justify="center">
           <div v-if="selectedIndex === 0" class="width100">
             <ScreenTimeline></ScreenTimeline>
           </div>
@@ -41,5 +41,15 @@ const selectedIndex = ref(0);
 
 .width100 {
   width: 100%;
+}
+.scroll {
+  overflow-y: auto;
+  height: 100vh;
+}
+
+@media (max-width: 1500px) {
+  .scroll {
+    overflow-y: hidden;
+  }
 }
 </style>

@@ -9,7 +9,6 @@ onMounted(() => (isLoading.value = false));
 const items = [
   { id: "/", title: "Home" },
   { id: "/projects/projects", title: "Projects" },
-  { id: "viewer", title: "Viewer" },
 ];
 </script>
 <template>
