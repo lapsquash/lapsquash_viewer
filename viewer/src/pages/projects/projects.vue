@@ -1,5 +1,13 @@
 <script lang="ts">
 import { ref } from "vue";
+const fs = require('fs');
+const dirs = fs.readdirSync('./src/assets/projects');
+
+for (const dir of dirs) {
+  const json = fs.readFileSync(`./src/assets/projects/${dir}/manifest.json`);
+  const manifests = JSON.parse(json);
+  console.log(manifests.name);
+}
 
 export default {
   setup() {
@@ -11,10 +19,8 @@ export default {
     }
 
     const items = ref<Project[]>([
-      { title: "Project 1", text: "test4", tag: ["tag1", "egg"], uuid: 1234 },
-      { title: "Project 2", text: "test3", tag: ["tag2"], uuid: 2345 },
-      { title: "Project 3", text: "test2", tag: ["tag3"], uuid: 3456 },
-      { title: "Project 4", text: "test1", tag: ["tag4"], uuid: 4567 },
+      { title: dirs[0], text: "test4", tag: ["tag1", "egg"], uuid: 1234 },
+      { title: dirs[1], text: "test3", tag: ["tag2"], uuid: 2345 },
     ]);
 
     const router = useRouter();

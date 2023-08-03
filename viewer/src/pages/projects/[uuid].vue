@@ -1,6 +1,6 @@
 <script setup>
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
-import manifest from "../../assets/sample/manifest.json";
+import manifest from "../../assets/projects/sample01/manifest.json";
 const date = new Date(manifest.startWith);
 const router = useRoute();
 let uuid = router.params.uuid;
@@ -15,7 +15,7 @@ console.log(router.params.uuid);
           <v-card>
             <div class="video-player">
               <video
-                :src="`../../assets/sample/assets/${uuid}.mp4`"
+                :src="`../../assets/projects/sample01/assets/${uuid}.mp4`"
                 muted
                 loop
                 autoplay
