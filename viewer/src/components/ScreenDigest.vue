@@ -1,25 +1,25 @@
 <script setup lang="ts">
-interface Project {
-  title: string;
-  text: string;
-  tag: string[];
-  uuid: number;
-}
+const router = useRoute();
+const uuid = router.params.uuid;
+const fs = require("fs");
+const json = fs.readFileSync(`./src/assets/projects/${uuid}/manifest.json`);
+const project = JSON.parse(json);
+const date = new Date(project.startWith).toLocaleString("ja-JP", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+const assets = project.assets;
+console.log(uuid,date);
 
-const items = ref<Project[]>([
-  { title: "Project 1", text: "test4", tag: ["tag1", "egg"], uuid: 1234 },
-  { title: "Project 2", text: "test3", tag: ["tag2"], uuid: 2345 },
-  { title: "Project 3", text: "test2", tag: ["tag3"], uuid: 3456 },
-  { title: "Project 4", text: "test1", tag: ["tag4"], uuid: 4567 },
-]);
+
 </script>
 <template>
-  <div>
+  <div class="pa-12">
     <v-card class="pa-3">
-      <v-row v-for="item in items" :key="item.title">
+      <v-row v-for="item in assets" :key="project.title">
         <v-col cols="12">
           <v-card class="timeCard">
-            <v-card-title>{{ item.title }}</v-card-title>
+            <v-card-title>{{ item.elapsedMs }}</v-card-title>
           </v-card>
         </v-col>
       </v-row>
@@ -38,4 +38,6 @@ const items = ref<Project[]>([
 .timeCard {
   min-height: 300px;
 }
+
+
 </style>

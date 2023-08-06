@@ -1,10 +1,16 @@
-<script setup>
+<script setup lang="ts">
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
-import manifest from "../../assets/projects/sample01/manifest.json";
-const date = new Date(manifest.startWith);
+
 const router = useRoute();
-let uuid = router.params.uuid;
-console.log(router.params.uuid);
+const uuid = router.params.uuid;
+const fs = require("fs");
+const json = fs.readFileSync(`./src/assets/projects/${uuid}/manifest.json`);
+const project = JSON.parse(json);
+const date = new Date(project.startWith).toLocaleString("ja-JP", {
+  dateStyle: "medium",
+  timeStyle: "short",
+});
+console.log(uuid);
 </script>
 
 <template>
@@ -15,7 +21,7 @@ console.log(router.params.uuid);
           <v-card>
             <div class="video-player">
               <video
-                :src="`../../assets/projects/sample01/assets/${uuid}.mp4`"
+                :src="`../../assets/projects/sample01/assets/1234.mp4`"
                 muted
                 loop
                 autoplay
@@ -26,13 +32,12 @@ console.log(router.params.uuid);
       </v-row>
       <v-row>
         <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
-          <p class="title">{{ manifest.name }}</p>
           <v-card>
             <v-card-title>
               <v-icon :icon="mdiMenu" size="x-small"></v-icon>
-              説明 - {{ date }}
+              {{ project.name }} - {{ date }}
             </v-card-title>
-            <v-card-text> {{ manifest.description }}</v-card-text>
+            <v-card-text> {{ project.description }}</v-card-text>
           </v-card>
         </v-col>
         <v-col>
@@ -87,14 +92,19 @@ console.log(router.params.uuid);
 
 .title {
   font-size: 24px;
-  font-weight: bold;
 }
+
+.v-card {
+  z-index: 3;
+}
+
 .v-card-title {
   font-size: 12px;
   color: gray;
 }
 .v-card-text {
   font-size: 16px;
+  max-width: 100%;
 }
 
 .video-player {

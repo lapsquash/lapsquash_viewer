@@ -1,28 +1,39 @@
 <script lang="ts">
-import { ref } from "vue";
-const fs = require('fs');
-const dirs = fs.readdirSync('./src/assets/projects');
-
+const fs = require("fs");
+const dirs = fs.readdirSync("./src/assets/projects");
+interface projects {
+  name: string;
+  description: string;
+  version: number;
+  startWith: string;
+  tags: string[];
+  counter: number;
+  uuid: string;
+}
+const projects: projects[] = [];
 for (const dir of dirs) {
   const json = fs.readFileSync(`./src/assets/projects/${dir}/manifest.json`);
   const manifests = JSON.parse(json);
-  console.log(manifests.name);
+
+  const date = new Date(manifests.startWith).toLocaleString("ja-JP", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+  const counter = manifests.assets.length;
+  projects.push({
+    name: manifests.name,
+    description: manifests.description,
+    version: manifests.version,
+    startWith: date,
+    tags: manifests.tags,
+    counter: counter,
+    uuid: dir,
+  });
 }
 
+console.log(projects);
 export default {
   setup() {
-    interface Project {
-      title: string;
-      text: string;
-      tag: string[];
-      uuid: number;
-    }
-
-    const items = ref<Project[]>([
-      { title: dirs[0], text: "test4", tag: ["tag1", "egg"], uuid: 1234 },
-      { title: dirs[1], text: "test3", tag: ["tag2"], uuid: 2345 },
-    ]);
-
     const router = useRouter();
 
     const goToProject = (uuid: any) => {
@@ -32,7 +43,7 @@ export default {
     };
 
     return {
-      items,
+      projects,
       goToProject,
     };
   },
@@ -45,17 +56,12 @@ export default {
       <v-row>
         <v-col>
           <v-row>
-            <v-card class="search-bar">
-              <input
-              id="search"
-              type="text"
-              placeholder="検索">
-            </v-card>
+            <search-bar />
           </v-row>
           <v-row>
             <v-col
-              v-for="item in items"
-              :key="item.title"
+              v-for="project in projects"
+              :key="project.name"
               cols="12"
               xs="12"
               sm="6"
@@ -65,8 +71,8 @@ export default {
             >
               <v-card
                 class="rounded-lg"
-                @click="goToProject(item.uuid)"
-                :key="item.uuid"
+                @click="goToProject(project.uuid)"
+                :key="project.name"
                 color="#E3EDF7"
               >
                 <v-img
@@ -75,15 +81,20 @@ export default {
                   cover
                 ></v-img>
                 <v-card-title
-                  >{{ item.title }}
-                  <p class="uuid">id:{{ item.uuid }}</p></v-card-title
+                  >{{ project.name }}
+                  <v-badge
+                    color="info"
+                    :content="project.counter"
+                    inline
+                  ></v-badge>
+                  <p class="uuid">id:{{ project.uuid }}</p></v-card-title
                 >
                 <v-card-text>
-                  {{ item.text }}
+                  {{ project.description }}
                 </v-card-text>
                 <v-chip-group>
                   <v-chip
-                    v-for="tag in item.tag"
+                    v-for="tag in project.tags"
                     :key="tag"
                     label
                     color="primary"
@@ -92,6 +103,7 @@ export default {
                     {{ tag }}
                   </v-chip>
                 </v-chip-group>
+                <p class="date pa-2">{{ project.startWith }}</p>
               </v-card>
             </v-col>
           </v-row>
@@ -113,18 +125,18 @@ export default {
   font-size: 10px;
 }
 
-.search-bar{
-  height: 40px;
-  width: 100%;
-  margin: 50px;
+.date {
+  font-size: 10px;
+  margin-right: 10px;
+  text-align: right;
 }
 
-input::placeholder{
+input::placeholder {
   text-align: left;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
-input{
+input {
   width: 100%;
   height: 100%;
 }

@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 <template>
-  <div>
+  <div class="pa-10">
     <v-col>
       <v-row>
         <v-card>
