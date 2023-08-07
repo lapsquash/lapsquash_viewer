@@ -4,22 +4,49 @@ const uuid = router.params.uuid;
 const fs = require("fs");
 const json = fs.readFileSync(`./src/assets/projects/${uuid}/manifest.json`);
 const project = JSON.parse(json);
-const date = new Date(project.startWith).toLocaleString("ja-JP", {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
+
+function startDate(date: number) {
+  return new Date(project.startWith + date).toLocaleString("ja-JP", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+}
 const assets = project.assets;
-console.log(uuid,date);
 
-
+function selectMovie(i: number) {
+  console.log(i);
+  const video = document.querySelector("video");
+  video?.pause();
+  video?.setAttribute("src", `../assets/projects/${uuid}/assets/${i}.mp4`);
+  video?.load();
+  video?.play();
+}
+console.log(uuid);
 </script>
 <template>
-  <div class="pa-12">
+  <div class="digest">
     <v-card class="pa-3">
-      <v-row v-for="item in assets" :key="project.title">
+      <v-row v-for="(item, i) in assets" :key="project.name">
         <v-col cols="12">
-          <v-card class="timeCard">
-            <v-card-title>{{ item.elapsedMs }}</v-card-title>
+          <v-card @click="selectMovie(i)" class="timeCard">
+            <v-row>
+              <v-col class="center">
+                <div class="video-player">
+                  <video
+                    :src="`../assets/projects/${uuid}/assets/${i}.mp4`"
+                    muted
+                  ></video>
+                </div>
+              </v-col>
+              <v-col
+                ><!-- FIXME:yyyy/mm/dd hh:mm:ssが変化しない -->
+                <v-card-title>{{
+                  startDate(item.elapsedMs) +
+                  " " +
+                  (project.startWith + item.elapsedMs)
+                }}</v-card-title>
+              </v-col>
+            </v-row>
           </v-card>
         </v-col>
       </v-row>
@@ -36,8 +63,41 @@ console.log(uuid,date);
 }
 
 .timeCard {
-  min-height: 300px;
+  padding: 0;
+  border-left: 2px solid #0478ff;
+  border-right: 2px solid #50caff;
+}
+.timeCard::before,
+.timeCard::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(to right, #0478ff 0%, #50caff 100%);
 }
 
+.digest {
+  padding-top: 12px;
+}
 
+video {
+  justify-content: center;
+  align-items: center;
+}
+
+.video-player {
+  aspect-ratio: 16/9;
+  justify-content: center;
+  align-items: center;
+  container-type: inline-size;
+  height: 100%;
+  padding-bottom: 1px;
+}
+
+// FIXME: これでいいのか？
+@container (max-width: 2000px) {
+  video {
+    height: 100%;
+    width: auto;
+  }
+}
 </style>

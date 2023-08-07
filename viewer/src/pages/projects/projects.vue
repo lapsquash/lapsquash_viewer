@@ -116,9 +116,8 @@ export default {
 <style>
 .v-card {
   background-color: #e3edf7;
-  filter: drop-shadow(2px 2px 4px rgba(114, 142, 171, 0.1))
-    drop-shadow(-6px -6px 20px #fff)
-    drop-shadow(4px 4px 20px rgba(111, 140, 176, 0.41));
+  box-shadow: 2px 2px 4px 0px rgba(114, 142, 171, 0.1), -6px -6px 20px 0px #fff,
+    4px 4px 20px 0px rgba(111, 140, 176, 0.41);
 }
 
 .uuid {

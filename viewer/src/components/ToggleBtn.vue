@@ -45,7 +45,16 @@ const selectedIndex = ref(0);
 }
 .scroll {
   overflow-y: auto;
-  height: 80vh;
+  height: 75vh;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgb(147, 204, 255);
+  border-radius: 100px;
 }
 
 @media (max-width: 1500px) {

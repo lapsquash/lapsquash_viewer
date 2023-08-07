@@ -21,7 +21,7 @@ console.log(uuid);
           <v-card>
             <div class="video-player">
               <video
-                :src="`../../assets/projects/sample01/assets/1234.mp4`"
+                :src="`../../assets/projects/${uuid}/assets/0.mp4`"
                 muted
                 loop
                 autoplay
@@ -93,11 +93,11 @@ console.log(uuid);
 .title {
   font-size: 24px;
 }
-
 .v-card {
-  z-index: 3;
+  background-color: #e3edf7;
+  box-shadow: 2px 2px 4px 0px rgba(114, 142, 171, 0.1), -6px -6px 20px 0px #fff,
+    4px 4px 20px 0px rgba(111, 140, 176, 0.41);
 }
-
 .v-card-title {
   font-size: 12px;
   color: gray;
