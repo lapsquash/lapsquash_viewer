@@ -75,6 +75,20 @@ console.log(uuid);
   background: linear-gradient(to right, #0478ff 0%, #50caff 100%);
 }
 
+.timeCard:active {
+  padding: 0;
+  border-left: 2px solid #7104ff;
+  border-right: 2px solid #5062ff;
+}
+
+.timeCard:active::before,
+.timeCard:active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: linear-gradient(to right, #7104ff 0%, #5062ff 100%);
+}
+
 .digest {
   padding-top: 12px;
 }

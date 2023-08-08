@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const selectedIndex = ref(0);
+const selectedIndex = ref(1);
 </script>
 <template>
   <div>

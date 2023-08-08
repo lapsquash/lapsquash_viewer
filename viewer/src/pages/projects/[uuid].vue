@@ -22,15 +22,16 @@ console.log(uuid);
             <div class="video-player">
               <video
                 :src="`../../assets/projects/${uuid}/assets/0.mp4`"
-                muted
-                loop
-                autoplay
+                controls
               ></video>
             </div>
           </v-card>
         </v-col>
       </v-row>
       <v-row>
+        <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
+          <v-btn :icon="mdiExclamationThick" size="x-small"></v-btn>
+        </v-col>
         <v-col cols="12" xs="12" sm="12" md="12" lg="12" xl="12">
           <v-card>
             <v-card-title>

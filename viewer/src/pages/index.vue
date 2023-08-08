@@ -9,8 +9,6 @@ onMounted(() => (isLoading.value = false));
 <template>
   <div>
     <VBtn @click="runAuthRedirect">ログイン！</VBtn>
-    <main>
-    </main>
   </div>
 </template>
 
