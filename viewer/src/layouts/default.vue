@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { mdiAccount } from "@mdi/js";
 
-const drawer = ref<boolean>(false);
+const drawer = ref<boolean>(true);
 const isLoading = ref<boolean>(true);
 
 onMounted(() => (isLoading.value = false));
@@ -17,7 +17,8 @@ const items = [
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <VBtn :icon="mdiAccount"></VBtn>
     </v-app-bar>
-    <v-navigation-drawer v-model="drawer" absolute bottom temporary>
+
+    <v-navigation-drawer v-model="drawer" expand-on-hover>
       <v-list nav dense>
         <v-list-item
           v-for="item in items"
@@ -29,6 +30,7 @@ const items = [
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
+
     <div class="slot-container">
       <VProgressLinear
         :indeterminate="isLoading"

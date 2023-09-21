@@ -40,11 +40,8 @@ console.log(uuid);
               </v-col>
               <v-col
                 ><!-- FIXME:yyyy/mm/dd hh:mm:ssが変化しない -->
-                <v-card-title>{{
-                  startDate(item.elapsedMs) +
-                  " " +
-                  (project.startWith + item.elapsedMs)
-                }}</v-card-title>
+                <v-card-title class="number text-right">{{i}}
+                </v-card-title>
               </v-col>
             </v-row>
           </v-card>
@@ -96,6 +93,14 @@ console.log(uuid);
 video {
   justify-content: center;
   align-items: center;
+}
+
+
+.number {
+  font-size: 40px;
+  color: blue;
+  opacity: 10%;
+  margin-top: 5px;
 }
 
 .video-player {

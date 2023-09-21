@@ -49,7 +49,7 @@ console.log(uuid);
                   ><v-icon :icon="mdiExclamationThick" size="x-small"></v-icon
                   >アクション</v-card-title
                 >
-                <v-card-text>行動の説明</v-card-text>
+                <v-card-text>水槽の中でで泳ぐサル</v-card-text>
               </v-card>
             </v-col>
             <v-col>
@@ -58,7 +58,9 @@ console.log(uuid);
                   ><v-icon :icon="mdiBookmark" size="x-small"></v-icon
                   >タグ</v-card-title
                 >
-                <v-tab>a</v-tab>
+                <v-tab>座る</v-tab>
+                <v-tab>毛づくろい</v-tab>
+                <v-tab>動く</v-tab>
               </v-card>
             </v-col>
           </v-row>
