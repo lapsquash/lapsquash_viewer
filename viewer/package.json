@@ -7,14 +7,14 @@
     "email": "wappon_28_dev@lapsquash.my.to"
   },
   "repository": "lapsquash/lapsquash_viewer",
-  "main": "dist-electron/main.js",
   "private": true,
   "scripts": {
+    "build": "nuxt build",
     "dev": "nuxt dev",
-    "dev:server": "cd plugins/analyzer && yarn run dev",
-    "build": "nuxi build --prerender && electron-builder",
-    "prepare": "nuxt prepare",
-    "lint": "eslint --fix"
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint --fix src/"
   },
   "engines": {
     "node": "<20.0.0"
@@ -34,16 +34,11 @@
     "@tsconfig/strictest": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",
-    "electron": "24.4.0",
-    "electron-builder": "^23.6.0",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-vue": "^9.14.1",
     "nuxt": "^3.5.1",
-    "nuxt-electron": "^0.5.0",
-    "typescript": "^5.0.4",
-    "vite-plugin-electron": "^0.11.2",
-    "vite-plugin-electron-renderer": "^0.14.5"
+    "typescript": "^5.0.4"
   }
 }

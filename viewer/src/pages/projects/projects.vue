@@ -1,55 +1,19 @@
-<script lang="ts">
-const fs = require("fs");
-const dirs = fs.readdirSync("./src/assets/projects");
+<script setup lang="ts">
+import { sampleProject } from "@/assets/sample_pj";
+import { Project } from "@/types/project";
 
-interface projects {
-  name: string;
-  description: string;
-  version: number;
-  startWith: string;
-  tags: string[];
-  counter: number;
-  uuid: string;
-}
+const projects: Project[] = [sampleProject, sampleProject, sampleProject];
 
-const projects: projects[] = [];
-for (const dir of dirs) {
-  const json = fs.readFileSync(`./src/assets/projects/${dir}/manifest.json`);
-  const manifests = JSON.parse(json);
+const router = useRouter();
 
-  const date = new Date(manifests.startWith).toLocaleString("ja-JP", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
+const getConnatedTags = (project: Project) => {
+  return project.assets
+    .map((asset) => asset.analysis.tags)
+    .reduce((acc, tags) => acc.concat(tags), []);
+};
 
-  const counter = manifests.assets.length;
-
-  projects.push({
-    name: manifests.name,
-    description: manifests.description,
-    version: manifests.version,
-    startWith: date,
-    tags: manifests.tags,
-    counter: counter,
-    uuid: dir,
-  });
-}
-
-export default {
-  setup() {
-    const router = useRouter();
-
-    const goToProject = (uuid: any) => {
-      router.push({
-        path: `/projects/${uuid}`,
-      });
-    };
-
-    return {
-      projects,
-      goToProject,
-    };
-  },
+const goToProject = (uuid: number) => {
+  router.push({ path: `/projects/${uuid}` });
 };
 </script>
 
@@ -74,13 +38,13 @@ export default {
             >
               <v-card
                 class="rounded-lg hover-shadow"
-                @click="goToProject(project.uuid)"
+                @click="goToProject(project.startWith)"
                 :key="project.name"
                 color="#E3EDF7"
               >
                 <div class="video-player">
                   <video
-                    :src="`../../assets/projects/${project.uuid}/assets/0.mp4`"
+                    :src="`../../assets/projects/${project.startWith}/assets/0.mp4`"
                     muted
                   ></video>
                 </div>
@@ -88,17 +52,17 @@ export default {
                   >{{ project.name }}
                   <v-badge
                     color="info"
-                    :content="project.counter"
+                    :content="project.assets.length"
                     inline
                   ></v-badge>
-                  <p class="uuid">id:{{ project.uuid }}</p></v-card-title
+                  <p class="uuid">id:{{ project.startWith }}</p></v-card-title
                 >
                 <v-card-text>
                   {{ project.description }}
                 </v-card-text>
                 <v-chip-group>
                   <v-chip
-                    v-for="tag in project.tags"
+                    v-for="tag in getConnatedTags(project)"
                     :key="tag"
                     label
                     color="primary"

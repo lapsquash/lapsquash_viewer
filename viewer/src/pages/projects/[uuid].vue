@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { sampleProject } from "@/assets/sample_pj";
+import { Project } from "@/types/project";
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
 
 const router = useRoute();
 const uuid = router.params.uuid;
-const fs = require("fs");
-const json = fs.readFileSync(`./src/assets/projects/${uuid}/manifest.json`);
-const project = JSON.parse(json);
+
+const project: Project = sampleProject;
+
 const date = new Date(project.startWith).toLocaleString("ja-JP", {
   dateStyle: "medium",
   timeStyle: "short",
@@ -69,7 +71,7 @@ console.log(uuid);
     </section>
     <section class="timeline">
       <v-col cols="12">
-        <ToggleBtn></ToggleBtn>
+        <ToggleBtn :project="project"></ToggleBtn>
       </v-col>
     </section>
   </div>

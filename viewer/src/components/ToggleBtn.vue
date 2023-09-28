@@ -1,5 +1,11 @@
 <script setup lang="ts">
+import { Project } from "@/types/project";
+
 const selectedIndex = ref(1);
+
+const { project } = defineProps<{
+  project: Project;
+}>();
 </script>
 <template>
   <div>
@@ -21,7 +27,7 @@ const selectedIndex = ref(1);
             <ScreenTimeline></ScreenTimeline>
           </div>
           <div v-if="selectedIndex === 1" class="width100">
-            <ScreenDigest></ScreenDigest>
+            <ScreenDigest :project="project"></ScreenDigest>
           </div>
         </v-row>
       </v-col>

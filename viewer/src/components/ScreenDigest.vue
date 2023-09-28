@@ -1,47 +1,39 @@
 <script setup lang="ts">
-const router = useRoute();
-const uuid = router.params.uuid;
-const fs = require("fs");
-const json = fs.readFileSync(`./src/assets/projects/${uuid}/manifest.json`);
-const project = JSON.parse(json);
+import { Project } from "@/types/project";
 
-function startDate(date: number) {
-  return new Date(project.startWith + date).toLocaleString("ja-JP", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-}
-const assets = project.assets;
+const props = defineProps<{
+  project: Project;
+}>();
+
+const assets = props.project.assets;
+
+const sampleMovieUrl =
+  "https://joy1.videvo.net/videvo_files/video/free/2015-08/large_watermarked/Ao_Nang_Beach_Yoga_MP4_HDV_1080p25__TanuriX_Stock_Footage_NS_preview.mp4";
 
 function selectMovie(i: number) {
   console.log(i);
   const video = document.querySelector("video");
   video?.pause();
-  video?.setAttribute("src", `../assets/projects/${uuid}/assets/${i}.mp4`);
+  video?.setAttribute("src", sampleMovieUrl);
   video?.load();
   video?.play();
 }
-console.log(uuid);
 </script>
 <template>
   <div class="digest">
     <v-card class="pa-3">
-      <v-row v-for="(item, i) in assets" :key="project.name">
+      <v-row v-for="(_, i) in assets" :key="project.startWith">
         <v-col cols="12">
           <v-card @click="selectMovie(i)" class="timeCard">
             <v-row>
               <v-col class="center">
                 <div class="video-player">
-                  <video
-                    :src="`../assets/projects/${uuid}/assets/${i}.mp4`"
-                    muted
-                  ></video>
+                  <video :src="sampleMovieUrl" muted></video>
                 </div>
               </v-col>
               <v-col
                 ><!-- FIXME:yyyy/mm/dd hh:mm:ssが変化しない -->
-                <v-card-title class="number text-right">{{i}}
-                </v-card-title>
+                <v-card-title class="number text-right">{{ i }} </v-card-title>
               </v-col>
             </v-row>
           </v-card>
@@ -94,7 +86,6 @@ video {
   justify-content: center;
   align-items: center;
 }
-
 
 .number {
   font-size: 40px;
