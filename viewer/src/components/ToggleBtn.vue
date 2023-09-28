@@ -16,7 +16,7 @@ const { project } = defineProps<{
             rounded="xl"
             mandatory
             v-model="selectedIndex"
-            color="blue"
+            color="primary"
           >
             <v-btn @click="selectedIndex = 0">タイムライン表示</v-btn>
             <v-btn @click="selectedIndex = 1">ダイジェスト表示</v-btn>

@@ -23,9 +23,6 @@ const goToProject = (uuid: number) => {
       <v-row>
         <v-col>
           <v-row>
-            <search-bar />
-          </v-row>
-          <v-row>
             <v-col
               v-for="project in projects"
               :key="project.name"
@@ -51,7 +48,7 @@ const goToProject = (uuid: number) => {
                 <v-card-title
                   >{{ project.name }}
                   <v-badge
-                    color="info"
+                    color="primary"
                     :content="project.assets.length"
                     inline
                   ></v-badge>
@@ -65,7 +62,7 @@ const goToProject = (uuid: number) => {
                     v-for="tag in getConnatedTags(project)"
                     :key="tag"
                     label
-                    color="primary"
+                    color="red"
                     class="ma-2"
                   >
                     {{ tag }}

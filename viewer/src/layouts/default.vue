@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiAccount } from "@mdi/js";
+import { mdiAccount, mdiCounter, mdiHome } from "@mdi/js";
 
 const drawer = ref<boolean>(true);
 const isLoading = ref<boolean>(true);
@@ -7,8 +7,8 @@ const isLoading = ref<boolean>(true);
 onMounted(() => (isLoading.value = false));
 
 const items = [
-  { id: "/", title: "Home" },
-  { id: "/projects/projects", title: "Projects" },
+  { id: "/", title: "Home", icon: mdiHome },
+  { id: "/projects/projects", title: "Projects", icon: mdiCounter },
 ];
 </script>
 <template>
@@ -16,17 +16,20 @@ const items = [
     <v-app-bar>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <VBtn :icon="mdiAccount"></VBtn>
+      <search-bar />
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" expand-on-hover>
-      <v-list nav dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.id"
-          link
-          :to="`${item.id}`"
-        >
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+    <v-navigation-drawer v-model="drawer" bottom temporary expand-on-hover>
+      <v-list v-for="item in items" :key="item.id" three-line>
+        <v-list-item class="list-item" :to="`${item.id}`" link>
+          <v-row>
+            <v-col cols="3">
+              <v-icon class="list-item-icon">{{ item.icon }}</v-icon>
+            </v-col>
+            <v-col cols="9">
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-col>
+          </v-row>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
@@ -72,5 +75,9 @@ v-navigation-drawer--open {
 
 v-list-item--open {
   transform: translateY(-100%);
+}
+
+.list-item-icon {
+  color: rgb(var(--v-theme-primary));
 }
 </style>
