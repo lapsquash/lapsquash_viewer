@@ -1,5 +1,7 @@
 import { defineNuxtConfig } from "nuxt/config";
 import vuetify from "vite-plugin-vuetify";
+import path from "path";
+
 export default defineNuxtConfig({
   modules: [],
   build: {
@@ -31,6 +33,11 @@ export default defineNuxtConfig({
   typescript: {
     tsConfig: {
       extends: "@tsconfig/strictest/tsconfig.json",
+    },
+  },
+  nitro: {
+    output: {
+      publicDir: path.join(__dirname, "dist"),
     },
   },
 });
