@@ -8,7 +8,7 @@ onMounted(() => (isLoading.value = false));
 
 const items = [
   { id: "/", title: "Home", icon: mdiHome },
-  { id: "/projects/projects", title: "Projects", icon: mdiCounter },
+  { id: "/login", title: "Login", icon: mdiCounter },
 ];
 </script>
 <template>

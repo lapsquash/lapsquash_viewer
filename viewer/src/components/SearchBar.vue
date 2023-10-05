@@ -16,7 +16,7 @@
 }
 
 .search-bar:hover {
-  background-color: #e3edf7;
+  background-color: white;
   box-shadow: 2px 2px 4px 0px rgba(114, 142, 171, 0.1), -6px -6px 20px 0px #fff,
     4px 4px 20px 0px rgba(111, 140, 176, 0.41);
   transition: all 1s ease-in-out;
