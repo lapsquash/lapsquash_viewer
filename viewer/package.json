@@ -11,15 +11,16 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "prepare": "nuxt prepare",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
     "lint": "eslint --fix src/"
   },
   "engines": {
     "node": "<20.0.0"
   },
   "dependencies": {
+    "@mdi/js": "^7.3.67",
     "@trpc/client": "^10.28.0",
     "@trpc/server": "^10.28.0",
     "axios": "^1.4.0",
@@ -29,7 +30,6 @@
     "vuetify": "^3.3.1"
   },
   "devDependencies": {
-    "@mdi/js": "^7.2.96",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@tsconfig/strictest": "^2.0.1",
     "@typescript-eslint/eslint-plugin": "^5.59.7",

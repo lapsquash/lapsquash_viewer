@@ -1,11 +1,4 @@
 {
-  "extends": "./src/.nuxt/tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "*": ["../../analyzer/src/*"],
-      "@analyzer": ["../../analyzer/src/routes"],
-      "@/*": ["./*"]
-    }
-  },
-  "exclude": ["../../analyzer/src/**/*"]
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./src/.nuxt/tsconfig.json"
 }
