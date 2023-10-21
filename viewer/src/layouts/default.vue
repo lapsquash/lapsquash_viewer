@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { mdiAccount, mdiCounter, mdiHome } from "@mdi/js";
 
-const drawer = ref<boolean>(true);
-const isLoading = ref<boolean>(true);
+const drawer = ref(false);
+const isLoading = ref(true);
 
 onMounted(() => (isLoading.value = false));
 

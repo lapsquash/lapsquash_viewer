@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Project } from "@/types/project";
+import { type Project } from "@/types/project";
 
 const selectedIndex = ref(1);
 
@@ -13,9 +13,9 @@ const { project } = defineProps<{
       <v-col>
         <v-row justify="center">
           <v-btn-toggle
+            v-model="selectedIndex"
             rounded="xl"
             mandatory
-            v-model="selectedIndex"
             color="primary"
           >
             <v-btn @click="selectedIndex = 0">タイムライン表示</v-btn>

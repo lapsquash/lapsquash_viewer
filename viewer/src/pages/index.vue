@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { sampleProject } from "@/assets/sample_pj";
-import { Project } from "@/types/project";
+import { type Project } from "@/types/project";
 
 const projects: Project[] = [sampleProject, sampleProject, sampleProject];
 
 const router = useRouter();
 
-const getConnatedTags = (project: Project) => {
-  return project.assets
+const getConnatedTags = (project: Project) =>
+  project.assets
     .map((asset) => asset.analysis.tags)
     .reduce((acc, tags) => acc.concat(tags), []);
-};
 
 const goToProject = (uuid: number) => {
-  router.push({ path: `/${uuid}` });
+  router.push({ path: `/projects/${uuid}` });
 };
 </script>
 
@@ -34,9 +33,9 @@ const goToProject = (uuid: number) => {
               xl="3"
             >
               <v-card
+                :key="project.name"
                 class="rounded-lg hover-shadow"
                 @click="goToProject(project.startWith)"
-                :key="project.name"
               >
                 <div class="video-player">
                   <video
@@ -80,14 +79,18 @@ const goToProject = (uuid: number) => {
 <style>
 .v-card {
   background-color: #fff;
-  box-shadow: 2px 2px 4px 0px rgba(114, 142, 171, 0.1), -6px -6px 20px 0px #fff,
+  box-shadow:
+    2px 2px 4px 0px rgba(114, 142, 171, 0.1),
+    -6px -6px 20px 0px #fff,
     4px 4px 20px 0px rgba(111, 140, 176, 0.41);
   transition: all 1s ease-in-out;
 }
 
 .hover-shadow:hover {
-  box-shadow: 2px 2px 4px 0px rgba(26, 137, 255, 0.801),
-    -6px -6px 20px 0px #9cffff, 4px 4px 20px 0px rgba(111, 140, 176, 0.41);
+  box-shadow:
+    2px 2px 4px 0px rgba(26, 137, 255, 0.801),
+    -6px -6px 20px 0px #9cffff,
+    4px 4px 20px 0px rgba(111, 140, 176, 0.41);
 }
 
 .uuid {

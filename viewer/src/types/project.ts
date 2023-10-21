@@ -3,7 +3,7 @@ export type Project = {
   description: string;
   version: string;
   startWith: number;
-  assets: {
+  assets: Array<{
     elapsedMs: number;
     durationMs: number;
     analysis: {
@@ -11,5 +11,5 @@ export type Project = {
       tags: string[];
       description: string;
     };
-  }[];
+  }>;
 };

@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from "nuxt/config";
 import vuetify from "vite-plugin-vuetify";
+import path from "path";
 
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -29,4 +30,9 @@ export default defineNuxtConfig({
     },
   },
   rootDir: "./src",
+  nitro: {
+    output: {
+      publicDir: path.join(__dirname, "dist"),
+    },
+  },
 });

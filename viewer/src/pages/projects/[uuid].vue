@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { sampleProject } from "@/assets/sample_pj";
-import { Project } from "@/types/project";
 import { mdiBookmark, mdiExclamationThick, mdiMenu } from "@mdi/js";
+import { sampleProject } from "@/assets/sample_pj";
+import { type Project } from "@/types/project";
 
 const router = useRoute();
-const uuid = router.params.uuid;
+const { uuid } = router.params;
 
 const project: Project = sampleProject;
 
@@ -100,7 +100,9 @@ console.log(uuid);
 }
 .v-card {
   background-color: #ffffff;
-  box-shadow: 2px 2px 4px 0px rgba(114, 142, 171, 0.1), -6px -6px 20px 0px #fff,
+  box-shadow:
+    2px 2px 4px 0px rgba(114, 142, 171, 0.1),
+    -6px -6px 20px 0px #fff,
     4px 4px 20px 0px rgba(111, 140, 176, 0.41);
 }
 .v-card-title {

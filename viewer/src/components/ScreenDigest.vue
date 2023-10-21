@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Project } from "@/types/project";
+import { type Project } from "@/types/project";
 
 const props = defineProps<{
   project: Project;
 }>();
 
-const assets = props.project.assets;
+const { assets } = props.project;
 
 const sampleMovieUrl =
   "https://joy1.videvo.net/videvo_files/video/free/2015-08/large_watermarked/Ao_Nang_Beach_Yoga_MP4_HDV_1080p25__TanuriX_Stock_Footage_NS_preview.mp4";
@@ -24,7 +24,7 @@ function selectMovie(i: number) {
     <v-card class="pa-3">
       <v-row v-for="(_, i) in assets" :key="project.startWith">
         <v-col cols="12">
-          <v-card @click="selectMovie(i)" class="timeCard">
+          <v-card class="timeCard" @click="selectMovie(i)">
             <v-row>
               <v-col class="center">
                 <div class="video-player">
