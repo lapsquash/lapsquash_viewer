@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { mdiAccount, mdiCounter, mdiHome } from "@mdi/js";
 
-const drawer = ref(false);
-const isLoading = ref(true);
+const drawer = ref<boolean>(false);
+const isLoading = ref<boolean>(true);
 
 onMounted(() => (isLoading.value = false));
 
@@ -13,24 +13,31 @@ const items = [
 </script>
 <template>
   <VApp>
-    <v-app-bar>
+    <v-app-bar elevation="4" elevate-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <VBtn :icon="mdiAccount"></VBtn>
       <search-bar />
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" bottom temporary expand-on-hover>
-      <v-list v-for="item in items" :key="item.id" three-line>
-        <v-list-item class="list-item" :to="`${item.id}`" link>
-          <v-row>
-            <v-col cols="3">
-              <v-icon class="list-item-icon">{{ item.icon }}</v-icon>
-            </v-col>
-            <v-col cols="9">
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-col>
-          </v-row>
-        </v-list-item>
+      <v-list
+        class="list-hover"
+        v-for="item in items"
+        :key="item.id"
+        three-line
+      >
+        <transition>
+          <v-list-item v-if="drawer" :to="`${item.id}`" link>
+            <v-row>
+              <v-col cols="3">
+                <v-icon class="list-item-icon">{{ item.icon }}</v-icon>
+              </v-col>
+              <v-col cols="9">
+                <v-list-item-title>{{ item.title }}</v-list-item-title>
+              </v-col>
+            </v-row>
+          </v-list-item>
+        </transition>
       </v-list>
     </v-navigation-drawer>
 
@@ -39,7 +46,9 @@ const items = [
         :indeterminate="isLoading"
         class="progress"
       ></VProgressLinear>
-      <v-main></v-main>
+      <v-container>
+        <v-main></v-main>
+      </v-container>
       <slot></slot>
     </div>
   </VApp>
@@ -55,26 +64,29 @@ const items = [
   }
 }
 
-.title-bar {
-  -webkit-app-region: drag;
-  position: fixed;
-  height: 20px;
+.v-enter-active,
+.v-leave-active {
+  transition: transform 0.3s ease-in-out;
 }
 
-v-navigation-drawer {
-  transition: transform 0.5s ease-in-out;
+.v-enter-from,
+.v-leave-to {
+  transform: translateX(-100%);
 }
 
-v-list-item {
-  transition: transform 0.5s ease-in-out;
-}
-
-v-navigation-drawer--open {
-  transform: translateX(100%);
-}
-
-v-list-item--open {
-  transform: translateY(-100%);
+.list-hover {
+  padding: 0;
+  .v-list-item {
+    transition: background-color 0.3s ease-in-out;
+    padding: 3vh;
+  }
+  .v-list-item:hover {
+    background-color: rgb(var(--v-theme-secondary));
+    color: rgb(var(--v-theme-on-primary));
+    .list-item-icon {
+      color: rgb(var(--v-theme-on-primary));
+    }
+  }
 }
 
 .list-item-icon {
