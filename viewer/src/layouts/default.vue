@@ -21,9 +21,9 @@ const items = [
 
     <v-navigation-drawer v-model="drawer" bottom temporary expand-on-hover>
       <v-list
-        class="list-hover"
         v-for="item in items"
         :key="item.id"
+        class="list-hover"
         three-line
       >
         <transition>
@@ -78,11 +78,15 @@ const items = [
   padding: 0;
   .v-list-item {
     transition: background-color 0.3s ease-in-out;
+    transition: transform 0.2s ease-in-out;
     padding: 3vh;
   }
   .v-list-item:hover {
     background-color: rgb(var(--v-theme-secondary));
     color: rgb(var(--v-theme-on-primary));
+    transform: translateX(5%);
+    transition: transform 0.2s ease-in-out;
+
     .list-item-icon {
       color: rgb(var(--v-theme-on-primary));
     }
